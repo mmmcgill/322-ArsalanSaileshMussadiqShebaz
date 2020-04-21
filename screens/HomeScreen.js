@@ -26,7 +26,7 @@ export default function HomeScreen() {
         <View style={{paddingBottom: 40}}>
         <TouchableOpacity>
           <View style={styles.buttoncont}>           
-           <Text style={styles.buttontext}>Options</Text>
+           <Text style={styles.buttontext}>Options(Gear)</Text>
           </View>
         </TouchableOpacity>
         </View>
