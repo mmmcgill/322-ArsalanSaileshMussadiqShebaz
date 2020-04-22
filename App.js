@@ -8,6 +8,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
+import WashMusicScreen from './screens/WashMusicScreen';
+import OptionsScreen from './screens/OptionsScreen';
 
 const Stack = createStackNavigator();
 
@@ -50,10 +52,10 @@ export default function App(props) {
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <Stack.Navigator screenOptions={{
-            headerShown: false
-          }}>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="WashMusic" component={WashMusicScreen} />
+            <Stack.Screen name="Options" component={OptionsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
