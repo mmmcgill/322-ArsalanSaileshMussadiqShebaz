@@ -1,41 +1,32 @@
-import * as WebBrowser from 'expo-web-browser';
+import { FontAwesome } from '@expo/vector-icons';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 
-import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
+
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
-
+      
+      <View style={styles.optionsB}>
+        <TouchableOpacity onPress={() => navigation.navigate('Options')}>
+          <FontAwesome name="gear" size={55}/>
+        </TouchableOpacity>
+        </View>
+      
       <View style={styles.welcomeContainer}>
         <Text style={{fontSize: 40}}>
           SCRUB
         </Text>
       </View>
 
-        <View style={{paddingBottom: 40}}>
-        <TouchableOpacity>
+        <View style={{paddingTop: 100}}>
+        <TouchableOpacity onPress={() => navigation.navigate('WashMusic')}>
           <View style={styles.buttoncont}>
-            <Text style={styles.buttontext}>Play</Text>
+            <Text style={styles.buttontext}>Click To Wash Your Hands!</Text>
           </View>
         </TouchableOpacity>
         </View>
-
-        <View style={{paddingBottom: 40}}>
-        <TouchableOpacity>
-          <View style={styles.buttoncont}>
-           <Text style={styles.buttontext}>Options(Gear)</Text>
-          </View>
-        </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity>
-          <View style={styles.buttoncont}>
-           <Text style={styles.buttontext}>Credits</Text>
-          </View>
-        </TouchableOpacity>
 
 
     </View>
@@ -57,6 +48,9 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     textAlign: 'center',
   },
+  optionsB: {
+    paddingRight: 290
+  },
   buttoncont: {
     alignItems: 'center',
     padding: 12,
@@ -65,6 +59,7 @@ const styles = StyleSheet.create({
   },
   buttontext: {
     margin: 10,
+    fontSize: 20,
   },
   contentContainer: {
     paddingTop: 30,
