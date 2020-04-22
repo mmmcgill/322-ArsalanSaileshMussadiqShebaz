@@ -8,7 +8,7 @@ import { MonoText } from '../components/StyledText';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      
+
       <View style={styles.welcomeContainer}>
         <Text style={{fontSize: 40}}>
           SCRUB
@@ -25,18 +25,18 @@ export default function HomeScreen() {
 
         <View style={{paddingBottom: 40}}>
         <TouchableOpacity>
-          <View style={styles.buttoncont}>           
+          <View style={styles.buttoncont}>
            <Text style={styles.buttontext}>Options(Gear)</Text>
           </View>
         </TouchableOpacity>
         </View>
 
         <TouchableOpacity>
-          <View style={styles.buttoncont}>           
+          <View style={styles.buttoncont}>
            <Text style={styles.buttontext}>Credits</Text>
           </View>
         </TouchableOpacity>
-        
+
 
     </View>
   );
