@@ -6,7 +6,7 @@ export default function WashMusicScreen() {
 return (
 
     <View style={styles.container}>
-      
+
         <View style={{paddingTop: 100}}>
         <TouchableOpacity>
           <View style={styles.buttoncont}>
@@ -123,4 +123,3 @@ const styles = StyleSheet.create({
       color: '#2e78b7',
     },
   });
-  

@@ -7,28 +7,31 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react
 export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
-      
       <View style={styles.optionsB}>
-        <TouchableOpacity onPress={() => navigation.navigate('Options')}>
-          <FontAwesome name="gear" size={55}/>
+        <TouchableOpacity onPress={() => navigation.navigate("Options")}>
+          <FontAwesome name="gear" size={55} />
         </TouchableOpacity>
-        </View>
-      
-      <View style={styles.welcomeContainer}>
-        <Text style={{fontSize: 40}}>
-          SCRUB
-        </Text>
       </View>
 
-        <View style={{paddingTop: 100}}>
-        <TouchableOpacity onPress={() => navigation.navigate('WashMusic')}>
+      <View style={styles.welcomeContainer}>
+        <Text style={{ fontSize: 40 }}>SCRUB</Text>
+      </View>
+
+      <View style={{ paddingTop: 100 }}>
+        <TouchableOpacity onPress={() => navigation.navigate("WashMusic")}>
           <View style={styles.buttoncont}>
             <Text style={styles.buttontext}>Click To Wash Your Hands!</Text>
           </View>
         </TouchableOpacity>
-        </View>
+      </View>
 
-
+      <View style={{ paddingTop: 100 }}>
+        <TouchableOpacity onPress={() => navigation.navigate("Images")}>
+          <View style={styles.buttoncont}>
+            <Text style={styles.buttontext}>Images!</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

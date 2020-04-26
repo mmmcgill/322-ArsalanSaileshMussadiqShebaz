@@ -5,9 +5,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 export default function LinksScreen() {
   return (
     <View style={styles.container}>
-     
+
       <View style={styles.linksB}>
-        <TouchableOpacity 
+        <TouchableOpacity
         onPress={() => {Linking.openURL( "https://www.cdc.gov/handwashing/when-how-handwashing.html");
         }}>
           <Image
@@ -16,7 +16,7 @@ export default function LinksScreen() {
           ></Image>
         </TouchableOpacity>
       </View>
-        
+
         <View style={styles.linksB}>
         <TouchableOpacity
           onPress={() => { Linking.openURL("https://www.who.int/gpsc/clean_hands_protection/en/");}}>

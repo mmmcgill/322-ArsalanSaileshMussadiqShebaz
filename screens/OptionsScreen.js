@@ -6,11 +6,11 @@ export default function OptionsScreen() {
     <View style={styles.container}>
 
         <TouchableOpacity>
-          <View style={styles.buttoncont}>           
+          <View style={styles.buttoncont}>
            <Text style={styles.buttontext}>Credits</Text>
           </View>
         </TouchableOpacity>
-        
+
     </View>
 
     );
