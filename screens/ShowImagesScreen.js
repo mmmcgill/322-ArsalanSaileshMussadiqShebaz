@@ -1,40 +1,47 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Linking, Image, Animated } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-// import { render } from "react-dom";
+import { StyleSheet, Animated } from "react-native";
 
-const images = [
-  require("../assets/images/cdc-logo.png"),
-  require("../assets/images/icon.png"),
-  require("../assets/images/robot-prod.png"),
-  require("../assets/images/robot-dev.png"),
-  require("../assets/images/splash.png"),
-];
+
+function wait(ms) {
+  var start = new Date().getTime();
+  var end = start;
+  while (end < start + ms) {
+    end = new Date().getTime();
+  }
+}
 
 class ImageLoader extends Component {
   state = {
-    opacity: new Animated.Value(0),
+    fadeIn: new Animated.Value(0),
+    fadeOut: new Animated.Value(1),
   };
 
-  onLoad = () => {
-    Animated.timing(this.state.opacity, {
+  fadeIn = () => {
+    Animated.timing(this.state.fadeIn, {
       toValue: 1,
       duration: 500,
-      useNativeDriver: true,
+    }).start(() => this.fadeOut());
+  };
+
+  fadeOut = () => {
+    wait(2000);
+    Animated.timing(this.state.fadeIn, {
+      toValue: 0,
+      duration: 500,
     }).start();
   };
 
   render() {
     return (
       <Animated.Image
-        onLoad={this.onLoad}
+        onLoad={this.fadeIn}
         {...this.props}
         style={[
           {
-            opacity: this.state.opacity,
+            opacity: this.state.fadeIn,
             transform: [
               {
-                scale: this.state.opacity.interpolate({
+                scale: this.state.fadeIn.interpolate({
                   inputRange: [0, 1],
                   outputRange: [0.85, 1],
                 }),
@@ -48,18 +55,37 @@ class ImageLoader extends Component {
   }
 }
 
+const images = [
+  require("../assets/images/handwash_03.jpg"),
+  require("../assets/images/handwash_04.jpg"),
+  require("../assets/images/handwash_05.jpg"),
+  require("../assets/images/handwash1_03.jpg"),
+  require("../assets/images/handwash1_04.jpg"),
+  require("../assets/images/handwash1_05.jpg"),
+  require("../assets/images/handwash3_03.jpg"),
+  require("../assets/images/handwash3_04.jpg"),
+  require("../assets/images/handwash3_05.jpg"),
+];
+
 export default function ShowImagesScreen() {
   return (
-    <>
-      {images.map((img) => (
-        <ImageLoader style={styles.image} source={img} />
-      ))}
-    </>
+    <ImageLoader
+      style={styles.image}
+      source={require("../assets/images/handwash_03.jpg")}
+    />
+
+    // <View>
+    //   {...images.map((image) => (
+    //     <ImageLoader key={image} source={{ uri: image }} style={styles.image} />
+    //   ))}
+    // </View>
   );
 }
 
 const styles = StyleSheet.create({
   image: {
+    alignContent: "center",
+    padding: 100,
     height: 100,
     width: 100,
   },
