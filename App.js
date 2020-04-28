@@ -18,6 +18,13 @@ export default function App(props) {
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   const containerRef = React.useRef();
   const { getInitialState } = useLinking(containerRef);
+  const bottomNavTheme = {
+    dark: true,
+    colors: {
+      card: '#AFFBD8',border: '#E8EAE9',
+    },
+  };
+
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
@@ -50,10 +57,10 @@ export default function App(props) {
   } else {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
+        {Platform.OS === 'android' && <StatusBar barStyle="default" hidden={true} />}
+        <NavigationContainer  ref={containerRef} initialState={initialNavigationState} theme={bottomNavTheme}>
           <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="Root" component={BottomTabNavigator}  />
             <Stack.Screen name="WashMusic" component={WashMusicScreen} />
             <Stack.Screen name="Options" component={OptionsScreen} />
           </Stack.Navigator>
