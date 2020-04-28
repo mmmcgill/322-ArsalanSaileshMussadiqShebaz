@@ -15,12 +15,11 @@ export default function BottomTabNavigator({ navigation, route }) {
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME} tabBarOptions={{showLabel: false, activeTintColor: 'black'}}>
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Home',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-home" />,
         }}
 
@@ -29,7 +28,6 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Links"
         component={LinksScreen}
         options={{
-          title: 'Links',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-globe" />,
         }}
       />

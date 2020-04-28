@@ -1,32 +1,44 @@
 import { FontAwesome } from '@expo/vector-icons';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      
+
+      <LinearGradient
+        colors={['#08AEEA', '#2AF598']}
+        start={[0, 0]}
+        end={[1, 1]}
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 1000,
+        }}
+      />
+
       <View style={styles.optionsB}>
         <TouchableOpacity onPress={() => navigation.navigate('Options')}>
-          <FontAwesome name="gear" size={55}/>
+          <FontAwesome name="gear" size={55} />
         </TouchableOpacity>
-        </View>
-      
+      </View>
+
       <View style={styles.welcomeContainer}>
-        <Text style={{fontSize: 40}}>
+        <Text style={{ fontSize: 40 }}>
           SCRUB
         </Text>
       </View>
 
-        <View style={{paddingTop: 100}}>
+      <View style={{ paddingTop: 60 }}>
         <TouchableOpacity onPress={() => navigation.navigate('WashMusic')}>
-          <View style={styles.buttoncont}>
-            <Text style={styles.buttontext}>Click To Wash Your Hands!</Text>
-          </View>
+          <Image source={require("../assets/images/hw2.svg")} style={styles.washHands} />
         </TouchableOpacity>
-        </View>
+      </View>
 
 
     </View>
@@ -39,7 +51,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 100,
+    paddingTop: 75,
   },
   developmentModeText: {
     marginBottom: 20,
@@ -49,17 +61,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   optionsB: {
-    paddingRight: 290
+    paddingRight: 290,
   },
-  buttoncont: {
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: 'lightblue',
-    borderRadius: 50,
-  },
-  buttontext: {
-    margin: 10,
-    fontSize: 20,
+  washHands: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain'
   },
   contentContainer: {
     paddingTop: 30,
@@ -68,72 +75,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 80,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
   },
 });
