@@ -1,57 +1,69 @@
-import { Ionicons } from '@expo/vector-icons';
-import * as WebBrowser from 'expo-web-browser';
-import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import * as React from "react";
+import { StyleSheet, Text, View, Linking, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function LinksScreen() {
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <Text style={styles.contentContainer}>Add Here</Text>
-    </ScrollView>
-  );
-}
+    <View style={styles.container}>
 
-function OptionButton({ icon, label, onPress, isLastOption }) {
-  return (
-    <RectButton style={[styles.option, isLastOption && styles.lastOption]} onPress={onPress}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.optionIconContainer}>
-          <Ionicons name={icon} size={22} color="rgba(0,0,0,0.35)" />
-        </View>
-        <View style={styles.optionTextContainer}>
-          <Text style={styles.optionText}>{label}</Text>
-        </View>
+      <LinearGradient
+        colors={['#08AEEA', '#2AF598']}
+        start={[0, 0]}
+        end={[1, 1]}
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 1000,
+        }}
+      />
+
+
+      <View style={styles.linksB}>
+        <TouchableOpacity
+          onPress={() => {
+            Linking.openURL("https://www.cdc.gov/handwashing/when-how-handwashing.html");
+          }}>
+          <Image
+            style={styles.tinyLogoCDC}
+            source={require("../assets/images/cdc-logo.png")}
+          ></Image>
+        </TouchableOpacity>
       </View>
-    </RectButton>
+
+      <View style={styles.linksB}>
+        <TouchableOpacity
+          onPress={() => { Linking.openURL("https://www.who.int/gpsc/clean_hands_protection/en/"); }}>
+          <Image style={styles.tinyLogoWHO} source={require("../assets/images/who-logo.jpeg")}></Image>
+        </TouchableOpacity>
+      </View>
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     flex: 1,
-    backgroundColor: '#fafafa',
+    backgroundColor: '#fff',
+    paddingTop: 100,
   },
-  contentContainer: {
-    paddingTop: 15,
+  tinyLogoCDC: {
+    width: 160,
+    height: 150,
+    resizeMode: 'contain',
+    borderRadius: 60,
   },
-  optionIconContainer: {
-    marginRight: 12,
+  tinyLogoWHO: {
+    width: 190,
+    height: 100,
+    resizeMode: 'cover',
+    borderRadius: 90,
   },
-  option: {
-    backgroundColor: '#fdfdfd',
-    paddingHorizontal: 15,
-    paddingVertical: 15,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderBottomWidth: 0,
-    borderColor: '#ededed',
-  },
-  lastOption: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  optionText: {
-    fontSize: 15,
-    alignSelf: 'flex-start',
-    marginTop: 1,
+  linksB: {
+    paddingTop: 125,
   },
 });
