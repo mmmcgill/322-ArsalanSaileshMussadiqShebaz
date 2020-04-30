@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Player from './Player';
 
 
 export default function WashMusicScreen() {
@@ -7,12 +8,8 @@ return (
 
     <View style={styles.container}>
       
-        <View style={{paddingTop: 100}}>
-        <TouchableOpacity>
-          <View style={styles.buttoncont}>
-            <Text style={styles.buttontext}>*Start From here!*</Text>
-          </View>
-        </TouchableOpacity>
+        <View >
+        <Player />
         </View>
 
 
