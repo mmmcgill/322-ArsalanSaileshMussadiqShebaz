@@ -22,11 +22,11 @@ export default function HomeScreen({ navigation }) {
         }}
       />
 
-      <View style={styles.optionsB}>
+      {/* <View style={styles.optionsB}>
         <TouchableOpacity onPress={() => navigation.navigate('Options')}>
           <FontAwesome name="gear" size={55} />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View style={styles.welcomeContainer}>
         <Text style={{ fontSize: 40 }}>
