@@ -10,8 +10,11 @@ import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import WashMusicScreen from './screens/WashMusicScreen';
 import OptionsScreen from './screens/OptionsScreen';
+import { BackgroundCarousel } from './screens/BackgroundCarousel';
 
 const Stack = createStackNavigator();
+
+
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -57,12 +60,19 @@ export default function App(props) {
   } else {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'android' && <StatusBar barStyle="default" hidden={true} />}
-        <NavigationContainer  ref={containerRef} initialState={initialNavigationState} theme={bottomNavTheme}>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Root" component={BottomTabNavigator}  />
+        {Platform.OS === "android" && (
+          <StatusBar barStyle="default" hidden={true} />
+        )}
+        <NavigationContainer
+          ref={containerRef}
+          initialState={initialNavigationState}
+          theme={bottomNavTheme}
+        >
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="WashMusic" component={WashMusicScreen} />
             <Stack.Screen name="Options" component={OptionsScreen} />
+            <Stack.Screen name="Carousel" component={BackgroundCarousel} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

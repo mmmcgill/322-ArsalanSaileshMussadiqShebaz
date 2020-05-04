@@ -7,7 +7,7 @@ export default function WashMusicScreen() {
 return (
 
     <View style={styles.container}>
-      
+
         <View >
         <Player />
         </View>
@@ -120,4 +120,3 @@ const styles = StyleSheet.create({
       color: '#2e78b7',
     },
   });
-  
