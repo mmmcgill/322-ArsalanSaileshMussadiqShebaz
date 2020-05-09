@@ -97,10 +97,6 @@ export default class Player extends Component {
   render() {
    return (
     <View style={styles.container}>
-      <Image
-      style = {styles.instructions}
-        source= {require('../assets/handwashing-1.png')}
-        />
      <View style={styles.controls}>
        <TouchableOpacity style={styles.button} onPress={this.handlePlayPause}>
          {this.state.isPlaying ? (
@@ -119,9 +115,7 @@ export default class Player extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
   },
   instructions: {
     width: 400,
@@ -144,7 +138,4 @@ const styles = StyleSheet.create({
   controls: {
     flexDirection: 'row',
   },
-  button: {
-    margin: 20,
-  }
 })
