@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Platform, Button, StyleSheet, View } from 'react-native';
 import LottieView from "lottie-react-native";
 
 export default class HandWashMove extends React.Component {
@@ -15,16 +15,16 @@ export default class HandWashMove extends React.Component {
   render() {
     return (
       <View>
-        <LottieView
-          ref={animation => {
-            this.animation = animation;
-          }}
-          style={{
-            width: 250,
-            height: 300,
-          }}
-          source={require('../assets/21163-washing-hands.json')}
-        />
+          <LottieView
+            ref={animation => {
+              this.animation = animation;
+            }}
+            style={{
+              width: 250,
+              height: 300,
+            }}
+            source={require('../assets/21163-washing-hands.json')}
+          />
       </View>
     );
   }

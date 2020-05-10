@@ -36,7 +36,7 @@ export default function HomeScreen({ navigation }) {
 
       <View style={{ paddingTop: 70 }}>
         <TouchableOpacity onPress={() => navigation.navigate('WashMusic')}>
-         <Handwash />
+        <Image source={require("../assets/images/hw2.svg")} style={styles.washHands} />
         </TouchableOpacity>
       </View>
 
