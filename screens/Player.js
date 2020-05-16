@@ -2,34 +2,40 @@ import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
+import { Asset } from 'expo-asset';
 
+const musicURI1 = Asset.fromModule(require('../assets/song1.mp3')).uri;
+const musicURI2 = Asset.fromModule(require('../assets/song2.mp3')).uri;
+const musicURI3 = Asset.fromModule(require('../assets/song3.mp3')).uri;
 
 const TRACKS = [
   {
-    title: 'Upbeat Party',
-    artist: 'Scott Holmes',
-    uri: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes/Inspiring__Upbeat_Music/Scott_Holmes_-_04_-_Upbeat_Party.mp3",
+    title: 'Something Elated',
+    artist: 'Broke for Free',
+    uri: musicURI1
   },
   {
-    title: 'Annalise',
-    artist: 'Derek Clagg',
-    uri: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Derek_Clegg/Solar/Derek_Clegg_-_12_-_Annalise.mp3',
+    title: 'Green Lights',
+    artist: 'Jahzzar',
+    uri: musicURI2
   },
   {
-    title: 'Vuelve a la Luz',
-    artist: 'Silvia de Alegra',
-    uri: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Ziklibrenbib/Silva_de_Alegria/Primavera_en_la_Guerra_del_Sonido/Silva_de_Alegria_-_06_-_Vuelve_a_la_Luz.mp3',
+    title: 'Siesta',
+    artist: 'Jahzzar',
+    uri: musicURI3
   },
 ];
 
 export default class Player extends Component {
   state = {
+   shouldPlay: false,
    isPlaying: false,
    playbackInstance: null,
    currentIndex: 0,
    volume: 1.0,
    isBuffering: false
   }
+
   async componentDidMount() {
     try {
       await Audio.setAudioModeAsync({
@@ -55,16 +61,21 @@ export default class Player extends Component {
       }
 
       const status = {
-        shouldPlay: isPlaying,
+        shouldPlay: true,
+        isPlaying:true,
         volume
       }
 
       playbackInstance.setOnPlaybackStatusUpdate(this.onPlayStatusUpdate)
-      await playbackInstance.loadAsync(source, status, false)
+      await playbackInstance.loadAsync(source, status, true)
       this.setState({playbackInstance})
     } catch (e) {
       console.log(e)
     }
+  }
+  async componentWillUnmount() {
+    const { playbackInstance } = this.state;
+    await playbackInstance.pauseAsync();
   }
 
   onPlaybackStatusUpdate = status => {
@@ -98,13 +109,7 @@ export default class Player extends Component {
    return (
     <View style={styles.container}>
      <View style={styles.controls}>
-       <TouchableOpacity style={styles.button} onPress={this.handlePlayPause}>
-         {this.state.isPlaying ? (
-         <Ionicons name='ios-pause' size={100} color='#444' />
-         ) : (
-         <Ionicons name='ios-play' size={100} color='#444' />
-         )}
-       </TouchableOpacity>
+       
      </View>
      {this.renderFileInfo()}
     </View>
