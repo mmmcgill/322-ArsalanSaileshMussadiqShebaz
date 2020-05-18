@@ -3,7 +3,7 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } fro
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-export default function OptionsScreen({navigation}) {
+export default function CreditsScreen() {
   return (
     <View style={styles.container}>
 
@@ -20,12 +20,15 @@ export default function OptionsScreen({navigation}) {
         }}
       />
 
+      <View style={styles.welcomeContainer}>
+        <Text style={{ fontSize: 40 }}>
+          Arsalan Bin Najeeb
+          Musaddiq javed
+          Sailesh Dahl
+          Shebaz Chaudary
 
-      <View style={{ paddingTop: 60 }}>
-        <Button title="Credits" onPress={() => navigation.navigate('Credits')}>
-        </Button>
+        </Text>
       </View>
-
 
 
 

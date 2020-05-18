@@ -5,11 +5,15 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { systemWeights } from 'react-native-typography';
+import { iOSUIKit } from 'react-native-typography';
+
 
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import WashMusicScreen from './screens/WashMusicScreen';
 import OptionsScreen from './screens/OptionsScreen';
+import CreditsScreen from './screens/CreditsScreen';
 
 const Stack = createStackNavigator();
 
@@ -63,6 +67,7 @@ export default function App(props) {
             <Stack.Screen name="Root" component={BottomTabNavigator}  />
             <Stack.Screen name="WashMusic" component={WashMusicScreen} />
             <Stack.Screen name="Options" component={OptionsScreen} />
+            <Stack.Screen name= "Credits" component={CreditsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
