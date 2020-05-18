@@ -109,7 +109,7 @@ export default class Player extends Component {
    return (
     <View style={styles.container}>
      <View style={styles.controls}>
-       
+
      </View>
      {this.renderFileInfo()}
     </View>
