@@ -44,7 +44,7 @@ export default class Player extends Component {
         playsInSilentModeIOS: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
         staysActiveInBackground: false,
-        playThroughEarpieceAndroid: true
+        playThroughEarpieceAndroid: false
       })
       this.loadAudio()
     } catch (e) {
