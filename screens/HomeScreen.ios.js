@@ -28,7 +28,9 @@ export default function HomeScreen({ navigation }) {
       />
 
       <View style={styles.welcomeContainer}>
-        <Text style={{ fontSize: 40 }}>SCRUB</Text>
+        <Text style={{fontFamily:'Bungee',fontSize: 75, paddingTop: 30, color: '#151B54' }}>
+          SCRUB
+        </Text>
       </View>
 
       <View style={{ paddingTop: 70 }}>

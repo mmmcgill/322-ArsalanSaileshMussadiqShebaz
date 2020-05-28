@@ -11,6 +11,7 @@ import useLinking from "./navigation/useLinking";
 import WashMusicScreen from "./screens/WashMusicScreen";
 import OptionsScreen from "./screens/OptionsScreen";
 import Timer from "./screens/Timer";
+import CreditsScreen from './screens/CreditsScreen';
 
 const Stack = createStackNavigator();
 
@@ -39,7 +40,16 @@ export default function App(props) {
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf"),
+          'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          'monton-reg': require('./assets/fonts/Monoton-Regular.ttf'),
+          'Fredoka-one': require('./assets/fonts/FredokaOne-Regular.ttf'),
+          'Bangers': require('./assets/fonts/Bangers-Regular.ttf'),
+          'Bungee': require('./assets/fonts/BungeeShade-Regular.ttf'),
+          'Nosifer': require('./assets/fonts/Nosifer-Regular.ttf'),
+          'Anton': require('./assets/fonts/Anton-Regular.ttf'),
+          'Lobster': require('./assets/fonts/Lobster-Regular.ttf'),
+        
+          
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
@@ -71,12 +81,17 @@ export default function App(props) {
             <Stack.Screen name="WashMusic" component={WashMusicScreen} />
             <Stack.Screen name="Timer" component={Timer} />
             <Stack.Screen name="Options" component={OptionsScreen} />
+            <Stack.Screen name= "Credits" component={CreditsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
     );
   }
+
+  
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
