@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Image } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions, Image, Alert } from "react-native";
 
 const DEVICE_WIDTH = Dimensions.get("window").width;
 
@@ -31,6 +31,10 @@ export default class ImageCara extends React.Component {
             );
         }, 6000);
     };
+
+    componentWillUnmount = () => {
+        Alert.alert("Reminder!!!", "Please Wipe down your phone and any other surfaces you have touched before washing your hands!")
+    }
 
     setSelectedIndex = event => {
         const contentOffset = event.nativeEvent.contentOffset;

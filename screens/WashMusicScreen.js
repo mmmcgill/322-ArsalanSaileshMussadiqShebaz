@@ -6,15 +6,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 let images = [
-  require('../assets/images/1.jpg'),
-  require('../assets/images/2.jpg'),
-  require('../assets/images/3.jpg'),
-  require('../assets/images/4.jpg'),
-  require('../assets/images/5.jpg'),
-  require('../assets/images/6.jpg'),
-  require('../assets/images/7.jpg'),
-  require('../assets/images/8.jpg'),
-  require('../assets/images/9.jpg'),
+  require('../assets/images/best1.png'),
+  require('../assets/images/best2.png'),
+  require('../assets/images/best3.png'),
+  require('../assets/images/best4.png'),
+  require('../assets/images/best5.png'),
+  require('../assets/images/best6.png'),
+  require('../assets/images/best7.png'),
+  require('../assets/images/best8.png'),
+  require('../assets/images/best9.png'),
 ];
 
 export default function WashMusicScreen() {
