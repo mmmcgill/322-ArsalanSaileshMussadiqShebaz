@@ -4,33 +4,33 @@ import { StyleSheet, View, ScrollView, Dimensions, Image, Alert } from "react-na
 const DEVICE_WIDTH = Dimensions.get("window").width;
 
 export default class ImageCara extends React.Component {
-    scrollRef = React.createRef();
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedIndex: 0
-        };
-        this.scrollRef = React.createRef();
-    }
-    componentDidMount = () => {
-        setInterval(() => {
-            this.setState(
-                prev => ({
-                    selectedIndex:
-                        prev.selectedIndex === this.props.images.length - 1
-                            ? 0
-                            : prev.selectedIndex + 1
-                }),
-                () => {
-                    this.scrollRef.current.scrollTo({
-                        animated: true,
-                        x: DEVICE_WIDTH * this.state.selectedIndex,
-                        y: 0
-                    });
-                }
-            );
-        }, 6000);
+  scrollRef = React.createRef();
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedIndex: 0,
     };
+    this.scrollRef = React.createRef();
+  }
+  componentDidMount = () => {
+    setInterval(() => {
+      this.setState(
+        (prev) => ({
+          selectedIndex:
+            prev.selectedIndex === this.props.images.length - 1
+              ? 0
+              : prev.selectedIndex + 1,
+        }),
+        () => {
+          this.scrollRef.current.scrollTo({
+            animated: true,
+            x: DEVICE_WIDTH * this.state.selectedIndex,
+            y: 0,
+          });
+        }
+      );
+    }, 2125);
+  };
 
     componentWillUnmount = () => {
         Alert.alert("Reminder!!!", "Please Wipe down your phone and any other surfaces you have touched before washing your hands!")
@@ -66,12 +66,13 @@ export default class ImageCara extends React.Component {
         );
     }
 }
+
 const styles = StyleSheet.create({
-    backgroundImage: {
-        height: 500,
-        width: Dimensions.get("window").width
-    },
-    contain: {
-        height: 500
-    },
+  backgroundImage: {
+    height: 500,
+    width: Dimensions.get("window").width,
+  },
+  contain: {
+    height: 500,
+  },
 });
