@@ -1,35 +1,41 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Audio } from 'expo-av';
+import React, { Component } from "react";
+import { StyleSheet, TouchableOpacity, Image, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Audio } from "expo-av";
+import { Asset } from "expo-asset";
 
+const musicURI1 = Asset.fromModule(require("../assets/song1.mp3")).uri;
+const musicURI2 = Asset.fromModule(require("../assets/song2.mp3")).uri;
+const musicURI3 = Asset.fromModule(require("../assets/song3.mp3")).uri;
 
 const TRACKS = [
   {
-    title: 'Upbeat Party',
-    artist: 'Scott Holmes',
-    uri: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes/Inspiring__Upbeat_Music/Scott_Holmes_-_04_-_Upbeat_Party.mp3",
+    title: "Something Elated",
+    artist: "Broke for Free",
+    uri: musicURI1,
   },
   {
-    title: 'Annalise',
-    artist: 'Derek Clagg',
-    uri: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Derek_Clegg/Solar/Derek_Clegg_-_12_-_Annalise.mp3',
+    title: "Green Lights",
+    artist: "Jahzzar",
+    uri: musicURI2,
   },
   {
-    title: 'Vuelve a la Luz',
-    artist: 'Silvia de Alegra',
-    uri: 'https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Ziklibrenbib/Silva_de_Alegria/Primavera_en_la_Guerra_del_Sonido/Silva_de_Alegria_-_06_-_Vuelve_a_la_Luz.mp3',
+    title: "Siesta",
+    artist: "Jahzzar",
+    uri: musicURI3,
   },
 ];
 
 export default class Player extends Component {
   state = {
-   isPlaying: false,
-   playbackInstance: null,
-   currentIndex: 0,
-   volume: 1.0,
-   isBuffering: false
-  }
+    shouldPlay: false,
+    isPlaying: false,
+    playbackInstance: null,
+    currentIndex: 0,
+    volume: 1.0,
+    isBuffering: false,
+  };
+
   async componentDidMount() {
     try {
       await Audio.setAudioModeAsync({
@@ -38,51 +44,58 @@ export default class Player extends Component {
         playsInSilentModeIOS: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
         staysActiveInBackground: false,
-        playThroughEarpieceAndroid: true
-      })
-      this.loadAudio()
+        playThroughEarpieceAndroid: false,
+      });
+      this.loadAudio();
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   }
   async loadAudio() {
-    const {currentIndex, isPlaying, volume} = this.state
+    const { currentIndex, isPlaying, volume } = this.state;
 
     try {
-      const playbackInstance = new Audio.Sound()
+      const playbackInstance = new Audio.Sound();
       const source = {
-        uri: TRACKS[currentIndex].uri
-      }
+        uri: TRACKS[currentIndex].uri,
+      };
 
       const status = {
-        shouldPlay: isPlaying,
-        volume
-      }
+        shouldPlay: true,
+        isPlaying: true,
+        volume,
+      };
 
-      playbackInstance.setOnPlaybackStatusUpdate(this.onPlayStatusUpdate)
-      await playbackInstance.loadAsync(source, status, false)
-      this.setState({playbackInstance})
+      playbackInstance.setOnPlaybackStatusUpdate(this.onPlayStatusUpdate);
+      await playbackInstance.loadAsync(source, status, true);
+      this.setState({ playbackInstance });
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   }
-
-  onPlaybackStatusUpdate = status => {
-    this.setState({
-      isBuffering: status.isBuffering
-    })
+  async componentWillUnmount() {
+    const { playbackInstance } = this.state;
+    await playbackInstance.pauseAsync();
   }
+
+  onPlaybackStatusUpdate = (status) => {
+    this.setState({
+      isBuffering: status.isBuffering,
+    });
+  };
 
   handlePlayPause = async () => {
-    const { isPlaying, playbackInstance } = this.state
-    isPlaying ? await playbackInstance.pauseAsync() : await playbackInstance.playAsync()
+    const { isPlaying, playbackInstance } = this.state;
+    isPlaying
+      ? await playbackInstance.pauseAsync()
+      : await playbackInstance.playAsync();
 
     this.setState({
-      isPlaying: !isPlaying
-    })
-  }
+      isPlaying: !isPlaying,
+    });
+  };
   renderFileInfo() {
-    const { playbackInstance, currentIndex } = this.state
+    const { playbackInstance, currentIndex } = this.state;
     return playbackInstance ? (
       <View style={styles.trackInfo}>
         <Text style={[styles.trackInfoText, styles.largeText]}>
@@ -92,59 +105,42 @@ export default class Player extends Component {
           {TRACKS[currentIndex].artist}
         </Text>
       </View>
-    ) : null
+    ) : null;
   }
   render() {
-   return (
-    <View style={styles.container}>
-      <Image
-      style = {styles.instructions}
-        source= {require('../assets/handwashing-1.png')}
-        />
-     <View style={styles.controls}>
-       <TouchableOpacity style={styles.button} onPress={this.handlePlayPause}>
-         {this.state.isPlaying ? (
-         <Ionicons name='ios-pause' size={100} color='#444' />
-         ) : (
-         <Ionicons name='ios-play' size={100} color='#444' />
-         )}
-       </TouchableOpacity>
-     </View>
-     {this.renderFileInfo()}
-    </View>
-   )
+    return (
+      <View style={styles.container}>
+        <View style={styles.controls}></View>
+        {this.renderFileInfo()}
+      </View>
+    );
   }
- }
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
   },
   instructions: {
     width: 400,
     height: 400,
-    resizeMode: 'contain'
+    resizeMode: "contain",
   },
   trackInfo: {
-    textAlign: 'center',
-    flexWrap: 'wrap',
-    color: '#444'
+    textAlign: "center",
+    flexWrap: "wrap",
+    color: "#444",
   },
   largeText: {
     fontSize: 22,
-    textAlign: 'center'
+    textAlign: "center",
   },
   smallText: {
     fontSize: 16,
-    textAlign: 'center'
+    textAlign: "center",
   },
   controls: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
-  button: {
-    margin: 20,
-  }
-})
+});

@@ -2,6 +2,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Handwash from './HandWashMove';
 
 
 
@@ -29,13 +30,13 @@ export default function HomeScreen({ navigation }) {
       </View> */}
 
       <View style={styles.welcomeContainer}>
-        <Text style={{ fontSize: 40 }}>
+        <Text style={{ fontFamily: 'Bungee', fontSize: 75, color: '#151B54' }}>
           SCRUB
         </Text>
       </View>
 
-      <View style={{ paddingTop: 60 }}>
-        <TouchableOpacity onPress={() => navigation.navigate('WashMusic')}>
+      <View >
+        <TouchableOpacity onPress={() => navigation.navigate('Timer')}>
           <Image source={require("../assets/images/hw2.svg")} style={styles.washHands} />
         </TouchableOpacity>
       </View>
@@ -43,6 +44,7 @@ export default function HomeScreen({ navigation }) {
 
     </View>
   );
+
 }
 
 
