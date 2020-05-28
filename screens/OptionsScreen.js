@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Credits from './CreditsScreen';
 
 
-export default function OptionsScreen ({navigation}) {
+export default function OptionsScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
@@ -22,11 +22,11 @@ export default function OptionsScreen ({navigation}) {
         }}
       />
 
-
-      <View style={styles.linksB}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Credits')}>
-          <Image style={styles.tinyLogoCredits} source={require("../assets/images/Creditsbutton.png")}></Image>
+      <View style={{ paddingTop: 100 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Credits')}>
+          <View style={styles.buttoncont}>
+            <Text style={styles.buttontext}>Credits</Text>
+          </View>
         </TouchableOpacity>
       </View>
 
@@ -48,6 +48,17 @@ const styles = StyleSheet.create({
   },
   linksB: {
     paddingTop: 20,
+  },
+  buttoncont: {
+    alignItems: 'center',
+    padding: 12,
+    backgroundColor: '#151B54',
+    borderRadius: 50,
+  },
+  buttontext: {
+    margin: 10,
+    fontSize: 20,
+    color: 'white'
   },
 });
 

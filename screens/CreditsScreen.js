@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
@@ -20,22 +20,37 @@ export default function CreditsScreen() {
         }}
       />
 
-      <View style={styles.welcomeContainer}>
-        <Text style={{ fontFamily: 'Anton',fontSize: 40, paddingRight: 20, paddingLeft: 20, color:'#151B54'} }>
-          
-          1) Arsalan Bin Najeeb
-          2) Musaddiq Javed
-          3) Sailesh Dahl   
-
-           4)Shebaz Chaudary 
-
-        </Text>
+      <View style={{ paddingTop: 40 }}>
+        <TouchableOpacity onPress={() => { Linking.openURL("https://github.com/anw10");}}>
+          <View style={styles.buttoncont}>
+            <Text style={styles.buttontext}>Arsalan Bin Najeeb</Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
+      <View style={{ paddingTop: 20 }}>
+        <TouchableOpacity onPress={() => { Linking.openURL("https://github.com/shebazchy");}}>
+          <View style={styles.buttoncont}>
+            <Text style={styles.buttontext}>Shebaz Chowdhury</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
+      <View style={{ paddingTop: 20 }}>
+        <TouchableOpacity onPress={() => { Linking.openURL("https://github.com/dahalSailesh");}}>
+          <View style={styles.buttoncont}>
+            <Text style={styles.buttontext}>Sailesh Dahl</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
-
-
+      <View style={{ paddingTop: 20 }}>
+        <TouchableOpacity onPress={() => { Linking.openURL("https://github.com/javed96");}}>
+          <View style={styles.buttoncont}>
+            <Text style={styles.buttontext}>Musaddiq Javed</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
 
     </View>
@@ -63,12 +78,13 @@ const styles = StyleSheet.create({
   },
   buttoncont: {
     alignItems: 'center',
-    padding: 100,
-    backgroundColor: 'lightblue',
+    padding: 20,
+    backgroundColor: '#151B54',
     borderRadius: 50,
   },
   buttontext: {
-    margin: 10,
+    margin: 5,
     fontSize: 20,
+    color: 'white',
   },
 });
