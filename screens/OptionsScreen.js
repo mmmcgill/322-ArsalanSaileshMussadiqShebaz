@@ -1,9 +1,11 @@
-import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
+import * as React from "react";
+import { StyleSheet, Text, View, Linking, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { LinearGradient } from 'expo-linear-gradient';
+import Credits from './CreditsScreen';
 
 
-export default function OptionsScreen({navigation}) {
+export default function OptionsScreen ({navigation}) {
   return (
     <View style={styles.container}>
 
@@ -21,20 +23,14 @@ export default function OptionsScreen({navigation}) {
       />
 
 
-      <View style={{ paddingTop: 60 }}>
-        <Button title="Credits" onPress={() => navigation.navigate('Credits')}>
-        </Button>
+      <View style={styles.linksB}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Credits')}>
+          <Image style={styles.tinyLogoCredits} source={require("../assets/images/Creditsbutton.png")}></Image>
+        </TouchableOpacity>
       </View>
 
-
-
-
-
-
-
-
     </View>
-
   );
 }
 
@@ -42,28 +38,17 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flex: 1,
-    backgroundColor: '#fff',
     paddingTop: 100,
-    zIndex: 100,
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
+  tinyLogoCredits: {
+    width: 300,
+    height: 100,
+    resizeMode: 'cover',
+    borderRadius: 10,
   },
-  optionsB: {
-    paddingRight: 290
-  },
-  buttoncont: {
-    alignItems: 'center',
-    padding: 100,
-    backgroundColor: 'lightblue',
-    borderRadius: 50,
-  },
-  buttontext: {
-    margin: 10,
-    fontSize: 20,
+  linksB: {
+    paddingTop: 20,
   },
 });
+
+

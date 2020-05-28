@@ -5,7 +5,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Handwash from './HandWashMove';
 
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation }){
+
+ 
+
   return (
     <View style={styles.container}>
 
@@ -29,12 +32,12 @@ export default function HomeScreen({ navigation }) {
       </View> */}
 
       <View style={styles.welcomeContainer}>
-        <Text style={{ fontSize: 40 }}>
+        <Text style={{fontFamily:'Bungee',fontSize: 75, paddingTop: 30, color: '#151B54' }}>
           SCRUB
         </Text>
       </View>
 
-      <View style={{ paddingTop: 70 }}>
+      <View style={{ paddingTop: 0 }}>
         <TouchableOpacity onPress={() => navigation.navigate('WashMusic')}>
            <Handwash />
         </TouchableOpacity>

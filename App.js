@@ -9,6 +9,7 @@ import { systemWeights } from 'react-native-typography';
 import { iOSUIKit } from 'react-native-typography';
 
 
+
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import WashMusicScreen from './screens/WashMusicScreen';
@@ -43,6 +44,15 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          'monton-reg': require('./assets/fonts/Monoton-Regular.ttf'),
+          'Fredoka-one': require('./assets/fonts/FredokaOne-Regular.ttf'),
+          'Bangers': require('./assets/fonts/Bangers-Regular.ttf'),
+          'Bungee': require('./assets/fonts/BungeeShade-Regular.ttf'),
+          'Nosifer': require('./assets/fonts/Nosifer-Regular.ttf'),
+          'Anton': require('./assets/fonts/Anton-Regular.ttf'),
+          'Lobster': require('./assets/fonts/Lobster-Regular.ttf'),
+        
+          
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
@@ -73,7 +83,11 @@ export default function App(props) {
       </View>
     );
   }
+
+  
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

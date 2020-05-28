@@ -21,11 +21,13 @@ export default function CreditsScreen() {
       />
 
       <View style={styles.welcomeContainer}>
-        <Text style={{ fontSize: 40 }}>
-          Arsalan Bin Najeeb
-          Musaddiq javed
-          Sailesh Dahl
-          Shebaz Chaudary
+        <Text style={{ fontFamily: 'Anton',fontSize: 40, paddingRight: 20, paddingLeft: 20, color:'#151B54'} }>
+          
+          1) Arsalan Bin Najeeb
+          2) Musaddiq Javed
+          3) Sailesh Dahl   
+
+           4)Shebaz Chaudary 
 
         </Text>
       </View>
